@@ -55,6 +55,14 @@ public class OtherFits {
 	}
 
 	public static int BestFit(double[] weights) {
+		Arrays.sort(weights);
+		
+		for(int i = 0, j =  weights.length-1; i < (weights.length/2); i++, j--){
+            Double temp = weights[i];
+            weights[i] = weights[j];
+            weights[j] = temp;          
+        }
+		
 		bestFitBins = new double[weights.length];
 	    for (int i = 0; i < weights.length; i++) {
 	    	findBestPlace(weights[i]);
@@ -98,13 +106,7 @@ public class OtherFits {
 	
 	public static void bestFitPrint() {
 		double weights[] = {0.2, 0.5, 0.4, 0.7, 0.1, 0.3, 0.8};
-		Arrays.sort(weights);
-		
-		for(int i = 0, j =  weights.length-1; i < (weights.length/2); i++, j--){
-            Double temp = weights[i];
-            weights[i] = weights[j];
-            weights[j] = temp;          
-        }
+//		double weights[] = {0.4, 0.8, 0.5, 0.1, 0.7, 0.6, 0.1, 0.4, 0.2, 0.2};
 		
 		System.out.println("********* Best Fit *********");
 		System.out.print("weights: [");
