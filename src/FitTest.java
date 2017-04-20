@@ -11,6 +11,11 @@ public class FitTest {
 		double[] used = new double[size];
 		int numBins = 0;
 		int binCost = FirstFit.bestFit(bins, size, used, numBins, 0, 100);
+		int totalBinWeight = 0;
+		for (int i = 0; i < size; i++) {
+			totalBinWeight += bins[i];
+		}
+		int expected = (int)Math.ceil(totalBinWeight/1);
 		assertEquals("cost not same: ", 10, binCost);
 		
 	}
