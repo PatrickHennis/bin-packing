@@ -44,8 +44,21 @@ public class FitTest {
 	}
 	
 	@Test
-	public void testWorstFit() {
+	public void testWorstFit1() {
 		double[] bins = {0.4, 0.8, 0.5, 0.1, 0.7, 0.6, 0.1, 0.4, 0.2, 0.2};
+		int size = bins.length;
+		int binCost = OtherFits.BestFit(bins);
+		double totalBinWeight = 0;
+		for (int i = 0; i < size; i++) {
+			totalBinWeight += bins[i];
+		}
+		int expected = (int)Math.ceil(totalBinWeight);
+		assertEquals("cost not same: ", expected, binCost);
+	}
+	
+	@Test
+	public void testWorstFit2() {
+		double[] bins = {0.7, 0.6, 0.6, 0.5, 0.4, 0.3, 0.2, 0.2, 0.1, 0.1, 0.1};
 		int size = bins.length;
 		int binCost = OtherFits.BestFit(bins);
 		double totalBinWeight = 0;
